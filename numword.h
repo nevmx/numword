@@ -16,7 +16,7 @@ static const std::string tens[] = {"", "ten", "twenty", "thirty", "forty", "fift
 
 static const std::string multipliers[] = {"", "thousand", "million", "billion", "trillion", "quadrillion"};
 
-static const uint64_t max_number = 1000000000000000000;
+static const uint64_t max_number = 999999999999999999;
 
 class numword {
     char* num_word = nullptr;
