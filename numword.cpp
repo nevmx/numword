@@ -9,7 +9,7 @@ const std::string bw::numword::three_to_words(int n) const {
 
     // Hundreds...
     if (hundred > 0) {
-        answer += sub_twenty[hundred];
+        answer += _sub_twenty[hundred];
         answer += " hundred ";
     }
 
@@ -21,12 +21,12 @@ const std::string bw::numword::three_to_words(int n) const {
     }
 
     if (remainder < 20) {
-        answer += sub_twenty[remainder];
+        answer += _sub_twenty[remainder];
     } else {
         int index = remainder/10;
-        answer += tens[index];
+        answer += _tens[index];
         answer += "-";
-        answer += sub_twenty[remainder - (index * 10)];
+        answer += _sub_twenty[remainder - (index * 10)];
     }
 
     return answer + " ";
@@ -34,8 +34,8 @@ const std::string bw::numword::three_to_words(int n) const {
 
 const char* bw::numword::words(uint64_t n) const {
     // Too big number check
-    if (n > max_number) {
-        return "error";
+    if (n > _max_number) {
+        return error_message;
     }
 
     // Easiest case
@@ -53,7 +53,7 @@ const char* bw::numword::words(uint64_t n) const {
         int threeDigits = n - temp;
 
         if (threeDigits > 0) {
-            answer = three_to_words(threeDigits) + multipliers[i] + " " + answer;
+            answer = three_to_words(threeDigits) + _multipliers[i] + " " + answer;
         }
 
         n /= 1000;

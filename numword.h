@@ -9,14 +9,16 @@
 
 namespace bw {
 
-static const std::string sub_twenty[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+static const char * error_message = "error";
+
+static const std::string _sub_twenty[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
                                              "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
                                              "eighteen", "nineteen"};
-static const std::string tens[] = {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+static const std::string _tens[] = {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 
-static const std::string multipliers[] = {"", "thousand", "million", "billion", "trillion", "quadrillion"};
+static const std::string _multipliers[] = {"", "thousand", "million", "billion", "trillion", "quadrillion"};
 
-static const uint64_t max_number = 999999999999999999;
+static const uint64_t _max_number = 999999999999999999;
 
 class numword {
     char* num_word = nullptr;
