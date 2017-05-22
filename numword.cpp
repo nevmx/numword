@@ -2,6 +2,35 @@
 #include <cstring>
 #include "numword.h"
 
+const std::string bw::numword::three_to_words(int n) const {
+    std::string answer = "";
+
+    int hundred = n / 100;
+
+    // Hundreds...
+    if (hundred > 0) {
+        answer += sub_twenty[hundred];
+        answer += " hundred";
+    }
+
+    // And the rest
+    int remainder = n - hundred;
+
+    if (remainder == 0) {
+        return answer;
+    }
+
+    if (remainder < 20) {
+        answer += sub_twenty[remainder];
+    } else {
+        answer += tens[remainder/10];
+        answer += "-";
+        answer += sub_twenty[remainder - (remainder/10)];
+    }
+
+    return answer;
+}
+
 const char* bw::numword::words(uint64_t n) const {
     // Too big number check
     if (n > max_number) {
@@ -23,7 +52,7 @@ const char* bw::numword::words(uint64_t n) const {
         int threeDigits = n - temp;
 
         if (threeDigits > 0) {
-            answer = std::to_string(threeDigits) + multipliers[i] + " " + answer;
+            answer = three_to_words(threeDigits) + multipliers[i] + " " + answer;
         }
 
         n /= 1000;
