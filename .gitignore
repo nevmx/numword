@@ -63,3 +63,5 @@ $RECYCLE.BIN/
 *.out
 *.app
 
+.idea/
+cmake-build-debug/
