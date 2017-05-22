@@ -10,11 +10,11 @@ const std::string bw::numword::three_to_words(int n) const {
     // Hundreds...
     if (hundred > 0) {
         answer += sub_twenty[hundred];
-        answer += " hundred";
+        answer += " hundred ";
     }
 
     // And the rest
-    int remainder = n - hundred;
+    int remainder = n - (hundred * 100);
 
     if (remainder == 0) {
         return answer;
@@ -23,12 +23,13 @@ const std::string bw::numword::three_to_words(int n) const {
     if (remainder < 20) {
         answer += sub_twenty[remainder];
     } else {
-        answer += tens[remainder/10];
+        int index = remainder/10;
+        answer += tens[index];
         answer += "-";
-        answer += sub_twenty[remainder - (remainder/10)];
+        answer += sub_twenty[remainder - (index * 10)];
     }
 
-    return answer;
+    return answer + " ";
 }
 
 const char* bw::numword::words(uint64_t n) const {
